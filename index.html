@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>FinVis</title>
+<script src="jquery-1.9.1.js"></script>
+<script src="d3.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+
+boardValue = 1;
+
+function loadFunc(){
+
+$(document).ready(function() {
+    
+    //For mobile: Add event listener
+    document.addEventListener("deviceready", onDeviceReady, false);
+    });
+}
+
+// Once device APIs are available
+function onDeviceReady() {
+    // Register the event listener
+    document.addEventListener("backbutton", onBackKeyDown, false);
+}
+
+// Handle the back button
+//
+function onBackKeyDown() {
+   //console your current page location 
+   //alert("exiting app on back button");
+   
+   navigator.app.exitApp();
+
+}
+
+function showCredits(){
+    //var str = "Credits: Many of the images used in the game are from pixabay.com, which is a great site for images for free use without attribution. If you find an image in the game that violates a copyright, please notify me.";
+    //document.getElementById("blackBoard").innerHTML = str;
+    
+    if ( boardValue != 2 ){
+        var str = "Data sourced from xyz";
+        document.getElementById("blackBoard").innerHTML = str;
+        boardValue = 2;
+    }
+    else{
+        document.getElementById("blackBoard").innerHTML = "";
+        boardValue = 1;
+    }
+}
+function showContact(){
+    
+    if ( boardValue != 3 ){
+        var str = "Please send your feedback, suggestions and complaints to anurajr@gmail.com.";
+        document.getElementById("blackBoard").innerHTML = str;
+        boardValue = 3;
+    }
+    else{
+        document.getElementById("blackBoard").innerHTML = "";
+        boardValue = 1;
+    }
+}
+    
+</script>
+<link rel="stylesheet" type="text/css" href="finvis.css">
+</head>
+<body onload="loadFunc()">
+<div class="center">
+<br><br><br>
+
+<br>
+<br>
+<a href="stocks.html" class="demo-info demo-info-3">Stocks</a><br><br><br>
+<a href="recurring.html" class="demo-info demo-info-3">Yearly</a><br><br><br>
+<a href="lumpsum.html" class="demo-info demo-info-3">Lumpsum</a><br><br><br>
+<div id="blackBoard"></div>
+<br><br>
+
+<!--
+<a href="#" onclick="showCredits()" class="box-demo-info demo-info-2">Credits</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#" onclick="showContact()" class="box-demo-info demo-info-2">Contact</a>
+-->
+
+</div>
+
+
+        
+</body>
+</html>

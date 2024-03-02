@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Stocks</title>
+    <script src="jquery-1.9.1.js"></script>
+    <script src="d3.min.js" charset="utf-8"></script>
+
+<link rel="stylesheet" type="text/css" href="finvis.css">
+
+<style>
+    
+.mainTable {
+    margin: auto;
+    /*text-align:center;*/
+}    
+</style>
+</head>
+
+<body>
+        <br><br><br>
+    <a href="index.html" class="demo-info demo-info-3">Back</a><br><br>
+    
+    
+    <table id="mainTable" class="mainTable" >
+        <tr >
+            <td colspan=2>
+                <table id="stockTable" >
+                    <tr>
+                        <td><input name="stockName" type="text" value="HINDUNILVR" class="textbox" /></td>
+                    </tr>
+                    <tr>
+                        <td><input name="stockName" type="text" value="MARUTI" class="textbox" /></td>
+                    </tr>
+                    <tr>
+                        <td><input name="stockName" type="text" value="" class="textbox" /></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        
+        <tr>
+            <td colspan="2" align="center" >
+                <input type="button"   value="+" class="button roundButton" onclick="addRows()" />
+            </td>
+        </tr>
+        
+        <tr>
+            <td colspan="2" align="center" >
+                <input type="button"   value="Fetch" class="button" onclick="fetchStocks()" />
+            </td>
+        </tr>
+        <tr >
+            <td colspan=2>
+                
+            </td>
+        </tr>
+        
+    </table>
+    <table id="outTable" class="yearlyTab" ><tr><td ></td></tr></table>
+    <br><br><br>
+<script src="finvis.js"></script>
+<script>
+//to be done on loading
+function loadStocksFromLocal(){
+    
+    LOCALSTOCKS = JSON.parse(localStorage.getItem("LOCALSTOCKS"));
+    
+    //render the table accordingly
+    if( LOCALSTOCKS != null ){
+        //render the table
+        var out = "";
+        for(var i=0; i<LOCALSTOCKS.length; i++){
+            out += '<tr><td><input name="stockName" type="text" value="'+LOCALSTOCKS[i]+'" class="textbox" /></td></tr>';
+        }
+        out += '<tr><td><input name="stockName" type="text" value="" class="textbox" /></td></tr>';
+        $('#stockTable').html(out);
+    }
+    else{
+        //reset the array
+        LOCALSTOCKS = [];
+    }
+}
+loadStocksFromLocal();
+fetchStocks();
+</script>    
+    
+</body>
+
+

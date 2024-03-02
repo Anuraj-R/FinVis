@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Yearly</title>
+    <script src="jquery-1.9.1.js"></script>
+    <script src="d3.min.js" charset="utf-8"></script>
+
+<link rel="stylesheet" type="text/css" href="finvis.css">
+
+<style>
+    
+html { 
+       /* background: url('common/images/AntHill.png') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;*/
+       
+       margin: auto;
+        
+}    
+
+.mainTable {
+    margin: auto;
+    /*text-align:center;*/
+}    
+</style>
+</head>
+
+<body>
+    	<br><br><br>
+    <a href="index.html" class="demo-info demo-info-3">Back</a><br><br><br>
+    
+    
+    <table class="mainTable" >
+        <tr >
+            <td >Investment (Yearly)</td>
+            <td><input id="term_amount" type="text" value="100000" class="textbox" /></td>
+        </tr>
+        <tr>
+            <td>Annual Interest</td>
+            <td><input id="interest" type="text" value="12" class="textbox" /></td>
+        </tr>
+        <tr>
+            <td>Number of Terms (in years)</td>
+            <td><input id="term_num" type="text" value="15" class="textbox" /></td>
+        </tr>
+        <tr>
+            <td>Inflation</td>
+            <td><input id="inflation" type="text" value="7" class="textbox" /></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center" >
+                <input type="button"   value="Calculate" class="button" onclick="calculate()" />
+            </td>
+        </tr>
+        
+        <tr>
+            <td colspan="2" align="center" >
+                
+                <table class="outputTable">
+                    <tr>
+                        <td>
+                            Amount Invested
+                        </td>
+                        <td id="amount_invested">
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >
+                            Value After Inflation
+                        </td>
+                        <td id="value_after_inflation" >
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Final Amount
+                        </td>
+                        <td id="output">
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center" >
+                <table class="DATA" id="lineMapTable" > 
+                    <tbody>
+                    <tr>
+                        <td ><div class="lineDiv" style="background-color: green;"></div></td>
+                        <td ><font color="black"> &nbsp; Amount Invested</font></td>
+                    </tr>
+                    <tr>
+                        <td ><div class="lineDiv" style="background-color: blue;"></div></td>
+                        <td ><font color="black"> &nbsp; Total Balance Amount</font></td>
+                    </tr>
+                    <tr>
+                        <td ><div class="lineDiv" style="background-color: red;"></div></td>
+                        <td ><font color="black"> &nbsp; Inflation Adjusted Value</font></td>
+                    </tr>
+                </tbody></table>
+                <svg class="svg" id="graph" > </svg> <br/>
+                
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center" id="outputTable"></td>
+        </tr>
+    </table>
+<script src="finvis.js"></script>
+<script>
+//to be done on loading
+generateLineGraph();
+calculate();
+</script>    
+    
+</body>
+
+
